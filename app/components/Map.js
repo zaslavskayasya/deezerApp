@@ -1,5 +1,7 @@
 import React , {Component} from 'react';
 import GoogleMapReact from 'google-map-react';
+import {connect} from 'react-redux'
+
 
 const Place = ({ text }) => (
     <div style={{
@@ -10,20 +12,29 @@ const Place = ({ text }) => (
     </div>
 );
 
+@connect((store)=>{
+    return{
+        selected_place: store.places.selected_place
+    }
+})
 class SimpleMap extends React.Component {
     static defaultProps = {
         center: {lat: 46.28, lng: 30.43},
         zoom: 10
     };
+    componentWillReceiveProps(nextProps) {
+
+    }
     render() {
         return (
+
             <GoogleMapReact
                 defaultCenter={this.props.center}
                 defaultZoom={this.props.zoom}
             >
                 <Place
-                    lat={46.28}
-                    lng={30.43}
+                    lat={46.47}
+                    lng={30.75}
                     text={'1'}
                 />
                 <Place
